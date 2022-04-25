@@ -1,0 +1,2 @@
+gene,stat,pvalue,pheno_RAG1KO_p,pheno_RAG1KO_np,rgr_RAG1KO_p,rgr_RAG1KO_np,gene_product,pheno_expected,pvalue_corrected,significant_status
+PBANKA_010940,-4.477506847570777,7.5519806022573096e-06,Essential,Slow,0.22293414871445302,0.7193786880565071,"succinate dehydrogenase subunit 3, putative",EXPECTED_DIFFERENT,0.002318458044892994,significant

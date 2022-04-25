@@ -1,0 +1,3 @@
+gene,stat,pvalue,pheno_bl6_np,pheno_rag1ko_np,rgr_bl6_np,rgr_rag1ko_np,gene_product,pheno_expected,pvalue_corrected,significant_status
+PBANKA_101210,4.630731977253679,3.6437529155746256e-06,Dispensable,Essential,1.0836870379129,0.265326813321837,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,0.001129563403828134,significant
+PBANKA_124430,4.598345314047776,4.258597286518418e-06,Dispensable,Slow,1.1618366952251,0.52951937413974,"zinc finger protein, putative",EXPECTED_DIFFERENT,0.0013201651588207095,significant

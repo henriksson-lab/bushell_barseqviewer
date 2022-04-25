@@ -1,0 +1,2 @@
+gene,stat,pvalue,pheno_bl6_p,pheno_bl6_np,rgr_bl6_p,rgr_bl6_np,gene_product,pheno_expected,pvalue_corrected,significant_status
+PBANKA_110140,-6.940205001762292,3.915313564486165e-12,Slow,Dispensable,0.42734058109561296,1.02023217642389,rhoptry-associated protein 2/3,EXPECTED_DIFFERENT,1.2215778321196833e-09,significant

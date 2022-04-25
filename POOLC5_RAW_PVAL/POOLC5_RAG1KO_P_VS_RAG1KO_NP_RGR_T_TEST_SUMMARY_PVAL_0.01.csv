@@ -1,0 +1,146 @@
+gene,stat,pvalue,pheno_RAG1KO_p,pheno_RAG1KO_np,rgr_RAG1KO_p,rgr_RAG1KO_np,gene_product,pheno_expected,pvalue_corrected,significant_status
+PBANKA_041850,-3.6098385452431607,0.0003063876534384712,Essential,Dispensable,0.189214866747827,0.8651715700584092,"Plasmodium exported protein, unknown function",EXPECTED_DIFFERENT,0.044426209748578326,significant
+PBANKA_131140,-2.79226760648599,0.005234004948989604,Essential,Dispensable,0.105788109151429,0.681538055554736,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,0.7589307176034926,significant
+PBANKA_102760,-2.6965086331409887,0.007007058124519649,Essential,Dispensable,0.13980374140189097,0.7758609595477679,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,significant
+PBANKA_052230,-2.623437177977069,0.008704749662872263,Essential,Dispensable,0.189985908840469,0.933973014151462,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,significant
+PBANKA_123360,-2.191704073690186,0.028400881407099645,Essential,Dispensable,0.290521745995872,0.9802361162244458,"secreted ookinete protein, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_070210,-2.166881455284846,0.030243894335074604,Essential,Dispensable,0.211531508735584,0.82170638768611,"folate transporter 1, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_091600,-2.1557880457866934,0.03110021934861076,Essential,Dispensable,0.153672763458815,0.711432376489193,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_093290,2.089693769708819,0.0366453170354064,Dispensable,Insufficient data,1.36135579112351,0.522914091965358,"glycerol-3-phosphate dehydrogenase, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_123030,-2.0400903102928174,0.041341331639670686,Essential,Dispensable,0.0971653449972284,0.5741139078954169,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_100640,-1.906285634039252,0.056613157080811743,Essential,Dispensable,0.281165457196185,0.818449982183736,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_124430,1.6893770005138056,0.09114720567195667,Dispensable,Essential,0.663584296319371,0.23948021526473398,"zinc finger protein, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_070850,-1.6164929580410676,0.10598777469955177,Essential,Dispensable,0.10653157865111001,0.717668022332864,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_111760,1.6145891129113503,0.10639970466348997,Dispensable,Dispensable,1.39430486504478,0.717475344755998,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_082320,-1.544768046493863,0.1224023788787457,Insufficient data,Dispensable,0.33093460761513205,0.9258941087163459,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_083680,-1.4925849140280112,0.13554587471251647,Essential,Insufficient data,0.0721199279762738,0.59182426361468,fam-a protein;erythrocyte membrane associated protein 1,EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_071020,-1.488171281131234,0.13670572894801408,Essential,Insufficient data,0.12768885708529598,0.5978683692189329,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_136410,-1.4744858113378039,0.14035083517280703,Insufficient data,Dispensable,0.34752449142898106,0.8639166813272791,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_031260,-1.4362764263233372,0.15092369921809135,Essential,Dispensable,0.202440164836877,0.686964911815335,"palmitoyltransferase, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_111430,-1.4059213643127255,0.1597474765129978,Essential,Dispensable,0.135341751595262,0.636778253919743,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_124020,-1.350185958732874,0.17695634100118385,Essential,Essential,0.0878185651441279,0.37998654372921503,"G-protein coupled receptor, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_112120,-1.3432453579110992,0.17919253897979825,Insufficient data,Dispensable,0.310301259823005,1.07320772408793,"vacuolar transporter chaperone, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_070690,-1.340115699320175,0.18020773282593838,Essential,Essential,0.12082677518835001,0.459512555005624,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_142220,-1.2829005187166471,0.19952693110789765,Essential,Essential,0.12644192294623402,0.46658522996140206,"zinc transporter, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_143630,1.2594627378901906,0.20786324103242804,Dispensable,Dispensable,1.21150464686139,0.774118283988991,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_120290,-1.246977965980674,0.2124055768726566,Insufficient data,Dispensable,0.300669515631174,0.897508120532491,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_135800,1.2374471178143929,0.21592113541995817,Insufficient data,Essential,0.613457517147035,0.166174400763156,thioredoxin 2,EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_070700,1.2107603921169825,0.2259872492051772,Dispensable,Dispensable,1.36304432768713,0.8046511060044129,lipoate-protein ligase B,EXPECTED_SAME,1.0,Not significant
+PBANKA_041160,-1.2093900587187603,0.22651302611853352,Essential,Slow,0.128672286515298,0.5148244059099071,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_140450,-1.1314986732307792,0.25784526154223253,Insufficient data,Dispensable,0.371943765012557,0.865041738476392,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_135820,1.0925285985258337,0.2746008272948417,Dispensable,Essential,0.7666105046319409,0.466451102515539,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_010940,-1.050097126713272,0.2936734596353022,Essential,Dispensable,0.28164538366145,0.653677839745073,"succinate dehydrogenase subunit 3, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_092770,-1.0383689704750356,0.29909830992429687,Essential,Insufficient data,0.0813340178805816,0.540785526304898,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_145770,-1.000081850743967,0.31727089851636736,Insufficient data,Dispensable,0.341189029504245,0.793051844351861,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_143440,0.9863253707331969,0.32397347378447294,Dispensable,Dispensable,0.942679651941082,0.663935126314283,"secreted ookinete protein, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_135260,-0.9655912661389424,0.3342487473667243,Insufficient data,Dispensable,0.38435746894082,0.8023912717296671,"serine/threonine protein kinase, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_094130,-0.9601301260870679,0.33698972803741156,Essential,Essential,0.0873986805293702,0.240829811823939,translocon component PTEX88,EXPECTED_SAME,1.0,Not significant
+PBANKA_070270,0.9225326368314335,0.35625081470314635,Dispensable,Dispensable,1.16462051613098,0.850925069640371,rhomboid protease ROM3,EXPECTED_SAME,1.0,Not significant
+PBANKA_080060,-0.8780090570634232,0.37993880364018784,Slow,Dispensable,0.40720518823698,0.6413031141356391,"centrin, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_070070,-0.875418617509739,0.3813461734504132,Insufficient data,Dispensable,0.32108966287762103,0.6805783904339731,"Plasmodium exported protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_091140,-0.8718202407608396,0.38330645067981817,Essential,Insufficient data,0.15318641680414702,0.47213654883501,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_121220,-0.86055192336741,0.3894848744099103,Essential,Essential,0.0992734744520568,0.333962477746664,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_083200,-0.8347200609860997,0.4038753437841106,Insufficient data,Dispensable,0.340273257567818,0.696894442707915,"selenoprotein, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_082940,-0.818618559029254,0.41300407494204616,Essential,Essential,0.0986408943502988,0.235724119635752,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_113980,-0.811195393055139,0.4172534708502963,Essential,Insufficient data,0.14369904853034698,0.389023074036788,nuclear fusion protein,EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_123730,-0.7951004029616001,0.42655510027980303,Essential,Essential,0.126021318918044,0.408670666407957,"inner membrane complex protein, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_121060,-0.7920786519836098,0.42831481691763196,Insufficient data,Dispensable,0.300371270607255,0.6662795012958199,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_121260,0.7841959320364332,0.4329251517506557,Dispensable,Dispensable,1.08290484966343,0.8241744970932711,male gamete fusion factor HAP2,EXPECTED_SAME,1.0,Not significant
+PBANKA_140070,-0.7684846639119368,0.4421992984279566,Essential,Essential,0.11405233553064098,0.290587190413115,"Plasmodium exported protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_031180,0.7544563229988321,0.45057526246698065,Insufficient data,Insufficient data,1.02518610572082,0.425771501724791,"acyl-CoA synthetase, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_110700,0.7533346279008398,0.4512488552381657,Insufficient data,Essential,0.482233085751397,0.11156842349859401,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_010110,0.7185861563911656,0.4723959455667315,Dispensable,Dispensable,0.93517754164601,0.748595253534545,liver merozoite formation protein,EXPECTED_SAME,1.0,Not significant
+PBANKA_011160,-0.6874496655554306,0.4917994093450625,Insufficient data,Dispensable,0.541572080147115,0.794778707608169,"rhoptry protein ROP14, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_093260,0.666598584701013,0.5050285733772345,Dispensable,Dispensable,1.1754455395688,0.899637698783465,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_132910,-0.6484052160145245,0.516722897580853,Dispensable,Dispensable,0.7685879265204529,0.935256359261652,"plasmepsin VIII, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_133730,0.6437420571279674,0.5197427127846097,Essential,Essential,0.488034008019386,0.305542923724833,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_051300,-0.6261499500621389,0.5312165919683296,Essential,Insufficient data,0.19711659728683398,0.441498351244225,"inner membrane complex protein 1m, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_010820,-0.6177529198579848,0.5367382221992707,Essential,Essential,0.106496607170827,0.223322158801061,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_141470,0.6164950062832875,0.5375678667425715,Dispensable,Dispensable,1.1556161652693702,0.924623877038707,"ADP-ribosylation factor, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_103520,-0.5949399960675348,0.5518835809212456,Essential,Insufficient data,0.392589075242621,0.5759433491379781,LCCL domain-containing protein;scavenger receptor-like protein;LCCL/lectin adhesive-like protein 1,EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_031480,0.5653650575681038,0.5718254864346801,Dispensable,Dispensable,1.07879013952261,0.8552820340722559,"conserved Plasmodium membrane protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_080610,-0.5647331518549369,0.5722552815356086,Essential,Essential,0.13249695008095802,0.295695007389709,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_112490,0.5585615162526256,0.5764610103079846,Essential,Essential,0.43946198937389597,0.2813039244859569,"oxidoreductase, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_140410,-0.5548081296753516,0.5790259058820437,Essential,Essential,0.18724517024252899,0.34254845487873903,"membrane integral peptidase, M50 family, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_030240,0.5518811644435497,0.5810297740160701,Dispensable,Dispensable,0.926974493187971,0.7719987607843001,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_051700,-0.548650959517831,0.5832450069377233,Essential,Essential,0.0381238811435938,0.0964155873309075,early transcribed membrane protein,EXPECTED_SAME,1.0,Not significant
+PBANKA_102720,0.5312154049604038,0.5952695190160062,Insufficient data,Essential,0.785679342969637,0.405090494367629,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_142710,-0.49687468101632304,0.619277427079665,Essential,Essential,0.0782591438112641,0.160743678055046,"aquaporin, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_131270,-0.493330016848486,0.6217794223098914,Insufficient data,Insufficient data,0.280946766248524,0.552472306659626,gamete egress and sporozoite traversal protein,EXPECTED_SAME,1.0,Not significant
+PBANKA_110130,0.4854658927099817,0.6273459010838617,Essential,Essential,0.222232435811392,0.11192475296664699,"conserved rodent malaria protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_102460,-0.48280883042723494,0.6292314802755739,Essential,Essential,0.13751742747492499,0.284507284570182,liver specific protein 1,EXPECTED_SAME,1.0,Not significant
+PBANKA_021550,0.4630261571597796,0.6433456180920358,Insufficient data,Essential,0.4903604440812971,0.219916929823755,erythrocyte membrane associated protein 2,EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_050720,-0.458358244593018,0.6466950852105515,Essential,Essential,0.185030120576787,0.34099876814155,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_031590,0.456429746233994,0.6480809793772513,Dispensable,Insufficient data,0.973569694876516,0.7743177137925309,"pseudouridine synthase, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_071330,0.44790728812698494,0.6542201083147945,Dispensable,Dispensable,0.7531786280731521,0.6043514210011469,"protein kinase c inhibitor-like protein, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_081940,0.43477829959190867,0.6637233577323659,Insufficient data,Insufficient data,0.713986070636702,0.505123619179195,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_110140,-0.43197562328289835,0.6657591302685181,Insufficient data,Dispensable,0.403847580727378,0.670709165864074,rhoptry-associated protein 2/3,EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_051760,0.4174965277520977,0.676315263529687,Insufficient data,Essential,0.4200020969007371,0.20265763181154103,plasmepsin VII,EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_131720,0.3972177916387327,0.6912068633486801,Insufficient data,Essential,0.300421358323047,0.1435571005968,"pyridine nucleotide transhydrogenase, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_061640,0.3941590158532555,0.6934636420157656,Dispensable,Dispensable,1.2022291541544199,1.0050644120988401,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_093150,-0.38717521793450294,0.6986264954119508,Insufficient data,Dispensable,0.525597701670456,0.741667101318022,"folate transporter 2, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_051490,0.3700615592982752,0.7113366232950682,Dispensable,Dispensable,0.988726513563601,0.910383919198789,28 kDa ookinete surface protein,EXPECTED_SAME,1.0,Not significant
+PBANKA_112810,0.3495354709000585,0.7266873460992219,Insufficient data,Essential,0.411737882761627,0.22425831276387803,phospholipase;phosphatidylcholine-sterol acyltransferase,EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_093380,0.339736865682001,0.7340546964887268,Essential,Essential,0.0924308044795557,0.0566604170726861,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_051830,-0.33174347176513075,0.7400829720598405,Essential,Essential,0.0905015919428125,0.143859114770644,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_140900,0.33101869076496504,0.7406303674952224,Insufficient data,Essential,0.4661877769554029,0.308570814367699,"conserved protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_134630,0.3305267229560844,0.741002004146035,Dispensable,Dispensable,1.03341144024407,0.907690710290924,"CPW-WPC family protein, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_041350,0.32914909036382917,0.7420430007919863,Insufficient data,Dispensable,0.9358932733189671,0.722131755426928,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_031330,0.32892901009494774,0.7422093464059207,Insufficient data,Essential,0.401535330563395,0.211442772524959,MtN3-like protein,EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_131600,-0.3072473526216396,0.7586551052323272,Essential,Essential,0.109863100549351,0.147793794040837,"degradation in the ER (DER1) like protein, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_135960,-0.3013708016831754,0.7631317568006802,Insufficient data,Dispensable,0.672300409418834,0.882551252101955,transmission blocking target antigen precursor;6-cysteine protein,EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_062030,-0.26620014748203513,0.7900850694471612,Insufficient data,Dispensable,0.516665325028168,0.610601099419519,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_101750,0.26356546739955766,0.7921147708527196,Insufficient data,Essential,0.47161644545362,0.26508219128749,"lipase, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_111060,-0.2604135266738408,0.7945448100312344,Insufficient data,Insufficient data,0.377622511869017,0.5976389282838,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_041450,-0.2514614480992812,0.8014573647069012,Insufficient data,Insufficient data,0.41903955483241,0.530152803239025,"HVA22/TB2/DP1 family protein, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_041590,-0.24667056528660655,0.8051631882400206,Essential,Essential,0.132672599001971,0.21159451047143502,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_031580,-0.24396557206378972,0.8072574838872822,Slow,Dispensable,0.6083141795000071,0.6808388192225401,"ribosome associated membrane protein RAMP4, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_070440,-0.24360688144275364,0.8075352982184967,Essential,Essential,0.25581936442957104,0.347126530605826,"alpha/beta hydrolase, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_132900,-0.24070089536985453,0.8097869449650892,Dispensable,Dispensable,0.7265759354589659,0.7897608387756372,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_080640,0.23944871489973632,0.8107576593856969,Insufficient data,Dispensable,0.7255516977372192,0.595080597355201,"conserved protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_143500,-0.23128498294707037,0.817093412315167,Insufficient data,Essential,0.3377266173345119,0.452690395274266,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_050530,-0.23011683562376872,0.8180009829767849,Essential,Essential,0.167313331193303,0.214333628518137,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_080690,-0.22772738785544946,0.8198581793703051,Insufficient data,Dispensable,0.505561411851079,0.626359641738921,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_020790,-0.20173565390421236,0.8401233878216651,Essential,Essential,0.0928045145949538,0.141652589696151,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_031230,0.1942738448041819,0.845961464282907,Insufficient data,Essential,0.36089047809284597,0.277972127411722,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_082040,-0.19036926666175583,0.8490197789215858,Essential,Insufficient data,0.197450597076384,0.283993558309215,"sugar transporter, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_146060,0.17583094929253676,0.8604267543987156,Dispensable,Dispensable,0.92475998183065,0.853427540655649,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_112220,-0.1746585963388493,0.8613479029405603,Essential,Essential,0.219503535964629,0.27824088635723,"EGF-like membrane protein, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_131530,-0.15708740000423427,0.8751759676362904,Essential,Insufficient data,0.416351263017492,0.47273076734066904,LCCL domain-containing protein,EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_101910,0.15045193906588422,0.8804080661165334,Insufficient data,Dispensable,0.915651413438638,0.851300471280851,"DEAD/DEAH box helicase, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_080550,-0.14682919206260758,0.8832668424632352,Dispensable,Dispensable,1.17267630835917,1.23094891626378,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_041050,-0.14269147425612907,0.886533850371545,Essential,Essential,0.0933395233241556,0.12729900500800698,"transporter, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_101700,-0.13830612870277156,0.8899984820576089,Insufficient data,Dispensable,0.5790345102087211,0.666879768960065,"CorA-like Mg2+ transporter protein, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_144380,-0.13687740303053975,0.8911277004729461,Essential,Essential,0.244084819248828,0.28616907402321196,multidrug resistance-associated protein 2;ABC transporter C family member 2,EXPECTED_SAME,1.0,Not significant
+PBANKA_091240,-0.1074110229585475,0.9144629100425234,Insufficient data,Dispensable,0.688765216095932,0.7385778147361239,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_143060,0.0886081769000173,0.929393309423872,Insufficient data,Dispensable,0.73773832736539,0.669039929066646,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_141230,-0.0830715479543033,0.9337946490739656,Essential,Essential,0.139108705892487,0.158183043206508,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_120160,-0.08075830375096937,0.9356341684974915,Insufficient data,Essential,0.197431635166447,0.228095307738473,"ribosome-binding factor A, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_103240,-0.07584072288873302,0.9395458172226053,Essential,Essential,0.234283981378856,0.253811853105456,"alpha/beta hydrolase, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_131070,0.06594648541602098,0.9474204310956632,Dispensable,Dispensable,1.03838041148229,1.01463694326652,"glutaminyl-peptide cyclotransferase, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_133950,0.04154716134457367,0.9668596959732257,Insufficient data,Essential,0.363351823954479,0.33995655371818795,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_093750,-0.03683548234145795,0.9706161824192343,Insufficient data,Insufficient data,0.45579239434887997,0.473585302138638,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_011040,-0.03494099289839961,0.9721267929501934,Essential,Essential,0.21640969519452502,0.22719437621886301,"eukaryotic translation initiation factor 3 subunit L, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_113280,0.0336761059659168,0.9731354328396753,Dispensable,Dispensable,0.895585674560302,0.8837657101810491,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_020900,-0.03223019752440119,0.9742884745412403,Essential,Essential,0.255408163982299,0.263344766058766,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,1.0,Not significant
+PBANKA_092500,0.02997174021875074,0.9760895910801392,Essential,Essential,0.106164374536844,0.0992203773823482,"RING zinc finger protein, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_101810,-0.02001057836644886,0.9840349339397151,Insufficient data,Slow,0.448102081081182,0.45517776892212103,"ABC transporter G family member 2, putative",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_143350,-0.019450784058098265,0.9844814982375916,Essential,Essential,0.22046559500116397,0.226257044591483,"PPPDE peptidase domain-containing protein, putative",EXPECTED_SAME,1.0,Not significant
+PBANKA_100850,0.00924723955927031,0.992621875478104,Essential,Essential,0.0610282729515807,0.0603851693097359,translocon component PTEX150,EXPECTED_SAME,1.0,Not significant
+PBANKA_093100,0.0031541760953131964,0.9974833357644729,Insufficient data,Essential,0.271456886619435,0.268886659639757,"conserved Plasmodium membrane protein, unknown function",EXPECTED_DIFFERENT,1.0,Not significant
+PBANKA_030600,,,Insufficient data,Insufficient data,,,6-cysteine protein,EXPECTED_SAME,,Not significant
+PBANKA_051500,,,Insufficient data,Dispensable,,1.00433457349855,25 kDa ookinete surface antigen precursor,EXPECTED_DIFFERENT,,Not significant
+PBANKA_071490,,,Insufficient data,Essential,,0.218459250195453,"dihydrolipoyl dehydrogenase, apicoplast, putative",EXPECTED_DIFFERENT,,Not significant
+PBANKA_080040,,,Insufficient data,Essential,,0.28086643765668895,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,,Not significant
+PBANKA_082420,,,Insufficient data,Insufficient data,,0.46762260890804,perforin-like protein 3,EXPECTED_SAME,,Not significant
+PBANKA_093080,,,Insufficient data,Essential,,0.249406084510471,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,,Not significant
+PBANKA_101210,,,Insufficient data,Essential,,0.337496145972944,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,,Not significant
+PBANKA_103780,,,Insufficient data,Insufficient data,,0.32549191282778805,secreted ookinete adhesive protein,EXPECTED_SAME,,Not significant
+PBANKA_110430,,,Insufficient data,Insufficient data,,0.67540025788405,"centrosomal protein CEP120, putative",EXPECTED_SAME,,Not significant
+PBANKA_112240,,,Insufficient data,Essential,,0.136732719094854,"superoxide dismutase [Fe], putative",EXPECTED_DIFFERENT,,Not significant
+PBANKA_120740,,,Insufficient data,Dispensable,,0.878816859892234,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,,Not significant
+PBANKA_123800,,,Insufficient data,Insufficient data,,,"conserved Plasmodium protein, unknown function",EXPECTED_SAME,,Not significant
+PBANKA_132170,,,Insufficient data,Insufficient data,0.345060580265401,,berghepain-1,EXPECTED_SAME,,Not significant
+PBANKA_140160,,,Insufficient data,Insufficient data,,,"methyltransferase-like protein, putative",EXPECTED_SAME,,Not significant
+PBANKA_144900,,,Insufficient data,Essential,,0.250396542377492,"aspartyl protease, putative",EXPECTED_DIFFERENT,,Not significant
+PBANKA_145980,,,Insufficient data,Essential,,0.34450812881322196,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,,Not significant
