@@ -1,3 +1,0 @@
-gene,stat,pvalue,pheno_RAG1KO_p,pheno_RAG1KO_np,rgr_RAG1KO_p,rgr_RAG1KO_np,gene_product,pheno_expected,pvalue_corrected,significant_status
-PBANKA_041450,-3.201526008596417,0.0013670173374432236,Essential,Dispensable,0.217365737260328,0.7490710715919492,"HVA22/TB2/DP1 family protein, putative",EXPECTED_DIFFERENT,0.41967432259506965,significant
-PBANKA_121960,-3.2664319751267974,0.0010891197102498818,Essential,Dispensable,0.247326941450564,0.8166312593759391,"cg1 protein, putative",EXPECTED_DIFFERENT,0.3343597510467137,significant

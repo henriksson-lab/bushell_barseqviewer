@@ -1,3 +1,0 @@
-gene,stat,pvalue,pheno_bl6_p,pheno_rag1ko_p,rgr_bl6_p,rgr_rag1ko_p,gene_product,pheno_expected,pvalue_corrected,significant_status
-PBANKA_031580,4.525612038201054,6.022096695958481e-06,Dispensable,Slow,0.9806643360345172,0.5289950173639509,"ribosome associated membrane protein RAMP4, putative",EXPECTED_DIFFERENT,7.226516035150177e-05,significant
-PBANKA_051700,3.8851031901030737,0.00010228643346601996,Dispensable,Slow,0.891181825479095,0.408762804024231,early transcribed membrane protein,EXPECTED_DIFFERENT,0.0012274372015922395,significant

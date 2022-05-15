@@ -86,46 +86,11 @@ plottypes = ["scatter", "time series"]
 plot_type_options = [ {'label': key, 'value':key} for key in plottypes ]
 
 ##################################################################################################################
-experiment_dict = {
-       "BL6 Vs. Rag1KO scatter ALLDAYS RAW": "ALLDAYS_RAW_PVAL",
-       "BL6 Vs. Rag1KO scatter ALLDAYS ADJ": "ALLDAYS_ADJ_PVAL",
-
-       "BL6 Vs. Rag1KO scatter WO_D7 RAW": "WO_D7_RAW_PVAL",
-       "BL6 Vs. Rag1KO scatter WO_D7 ADJ": "WO_D7_ADJ_PVAL",
-
-       "BL6 Vs. Rag1KO time series ALLDAYS": "barseq_abundance",
-       "BL6 Vs. Rag1KO time series WO_D7": "barseq_abundance_wo_d7",
-
-       "BL6 Vs. IFNyKO scatter ALLDAYS RAW": "INTERFERON_ALLDAYS_RAW_PVAL",
-       "BL6 Vs. IFNyKO scatter ALLDAYS ADJ": "INTERFERON_ALLDAYS_ADJ_PVAL",
-
-       "BL6 Vs. IFNyKO scatter WO_D7 RAW": "INTERFERON_WO_D7_RAW_PVAL",
-       "BL6 Vs. IFNyKO scatter WO_D7 ADJ": "INTERFERON_WO_D7_ADJ_PVAL",
-
-       "BL6 Vs. IFNyKO time series ALLDAYS": "interferon_barseq_abundances",
-       "BL6 Vs. IFNyKO time series WO_D7": "interferon_barseq_abundances_wo_d7",
-
-       "Single Transfection scatter ALLDAYS RAW": "POOLC5_RAW_PVAL",
-       "Single Transfection scatter ALLDAYS ADJ": "POOLC5_ADJ_PVAL",
-
-       "Single Transfection scatter WO_D7 RAW": "POOLC5_WO_D7_RAW_PVAL",
-       "Single Transfection scatter WO_D7 ADJ": "POOLC5_WO_D7_ADJ_PVAL",
-
-       "Single Transfection time series ALLDAYS": "single_transfection_barseq_abundances",
-       "Single Transfection time series WO_D7": "single_transfection_barseq_abundances_wo_d7",
-
-       "BL6 Vs. Rag1KO minipool2 scatter ALLDAYS RAW": "MINIPOOL2_ALLDAYS_RAW_PVAL",
-       "BL6 Vs. Rag1KO minipool2 scatter ALLDAYS ADJ": "MINIPOOL2_ALLDAYS_ADJ_PVAL",
-
-       "BL6 Vs. Rag1KO minipool2 scatter WO_D7 RAW": "MINIPOOL2_WO_D7_RAW_PVAL",
-       "BL6 Vs. Rag1KO minipool2 scatter WO_D7 ADJ": "MINIPOOL2_WO_D7_ADJ_PVAL",
-
-       "BL6 Vs. Rag1KO minipool2 time series ALLDAYS": "barseq_abundance",
-       "BL6 Vs. Rag1KO minipool2 time series WO_D7": "barseq_abundance_wo_d7"
-       }
-dict_list = getList(experiment_dict)
 
 
+experiment_meta = pd.read_csv("metadata.txt")
+experiment_dict = dict(zip(experiment_meta["name"].tolist(),experiment_meta["file"].tolist()))
+#print(experiment_dict)
 
 
 ################################################################################
@@ -345,11 +310,9 @@ def update_plot(selected_experiment, selected_plottype, selected_timeseries, sel
     key2 = " "
 
     if selected_experiment and selected_plottype and selected_timeseries and selected_gene:
-        #key1 = selected_experiment + " " + selected_plottype + " " + selected_timeseries + " " + selected_opt1
         key1 = selected_experiment + " " + selected_plottype + " " + selected_timeseries + " ADJ"
 
     if selected_experiment and selected_plottype and selected_timeseries and selected_gene and selected_opt1:
-        #key1 = selected_experiment + " " + selected_plottype + " " + selected_timeseries + " " + selected_opt1
         key2 = selected_experiment + " " + selected_plottype + " " + selected_timeseries
 
 
@@ -443,7 +406,7 @@ def update_plot(selected_experiment, selected_plottype, selected_timeseries, sel
                     x = usedat[usex],
                     y = usedat[usey],
                     marker_color = [color_discrete_map[c] for c in usedat['gene_status']],
-                    hovertext = hover_data
+                    hovertext = hover_data, showlegend=False
                 )
                 return fig1
 

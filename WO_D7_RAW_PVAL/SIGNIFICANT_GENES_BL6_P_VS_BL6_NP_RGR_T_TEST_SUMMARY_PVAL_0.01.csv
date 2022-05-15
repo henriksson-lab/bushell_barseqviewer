@@ -1,4 +1,0 @@
-gene,stat,pvalue,pheno_bl6_p,pheno_bl6_np,rgr_bl6_p,rgr_bl6_np,gene_product,pheno_expected,pvalue_corrected,significant_status
-PBANKA_080550,3.3856160973521496,0.0007101866121957998,Dispensable,Slow,0.998327393563951,0.737498452594847,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,0.22157822300508956,significant
-PBANKA_110140,-6.940205001762292,3.915313564486165e-12,Slow,Dispensable,0.42734058109561296,1.02023217642389,rhoptry-associated protein 2/3,EXPECTED_DIFFERENT,1.2215778321196833e-09,significant
-PBANKA_121260,3.037595149720808,0.002384741044652457,Dispensable,Slow,0.997911331144762,0.745905565962905,male gamete fusion factor HAP2,EXPECTED_DIFFERENT,0.7440392059315667,significant

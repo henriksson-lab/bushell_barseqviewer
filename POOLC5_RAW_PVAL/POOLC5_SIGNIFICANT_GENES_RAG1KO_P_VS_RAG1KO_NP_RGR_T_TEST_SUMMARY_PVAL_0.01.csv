@@ -1,5 +1,0 @@
-gene,stat,pvalue,pheno_RAG1KO_p,pheno_RAG1KO_np,rgr_RAG1KO_p,rgr_RAG1KO_np,gene_product,pheno_expected,pvalue_corrected,significant_status
-PBANKA_041850,-3.6098385452431607,0.0003063876534384712,Essential,Dispensable,0.189214866747827,0.8651715700584092,"Plasmodium exported protein, unknown function",EXPECTED_DIFFERENT,0.044426209748578326,significant
-PBANKA_052230,-2.623437177977069,0.008704749662872263,Essential,Dispensable,0.189985908840469,0.933973014151462,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,significant
-PBANKA_102760,-2.6965086331409887,0.007007058124519649,Essential,Dispensable,0.13980374140189097,0.7758609595477679,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,1.0,significant
-PBANKA_131140,-2.79226760648599,0.005234004948989604,Essential,Dispensable,0.105788109151429,0.681538055554736,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,0.7589307176034926,significant

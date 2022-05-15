@@ -1,4 +1,0 @@
-gene,stat,pvalue,pheno_bl6_p,pheno_rag1ko_p,rgr_bl6_p,rgr_rag1ko_p,gene_product,pheno_expected,pvalue_corrected,significant_status
-PBANKA_051700,2.620529018759811,0.008779345792346028,Dispensable,Essential,0.657919495962467,0.0381238811435938,early transcribed membrane protein,EXPECTED_DIFFERENT,1.0,significant
-PBANKA_070210,2.7179086451839045,0.006569597428174784,Dispensable,Essential,1.2390187166535,0.211531508735584,"folate transporter 1, putative",EXPECTED_DIFFERENT,0.9197436399444697,significant
-PBANKA_131140,3.2778971705204802,0.0010458348660595132,Dispensable,Essential,1.3240106653105,0.105788109151429,"conserved Plasmodium protein, unknown function",EXPECTED_DIFFERENT,0.14641688124833185,significant
