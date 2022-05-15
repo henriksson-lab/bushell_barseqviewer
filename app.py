@@ -9,6 +9,8 @@ from dash.dependencies import Input, Output
 import time
 from plotly.validators.scatter.marker import SymbolValidator
 import math
+from os import listdir
+from os.path import isfile, join
 import os.path
 import dash_table
 from dash.dash import no_update
@@ -21,6 +23,7 @@ from plotly import tools
 
 import pandas as pd
 import numpy as np
+
 
 def getList(dict):
     list = []
@@ -38,14 +41,36 @@ app = dash.Dash(
   server=server,
   routes_pathname_prefix='/barseqviewer2/')
 
+
+
+##################################################################################################################
+def experiment_to_mutant(selected_experiment):
+    mutant = "nomut"
+    if selected_experiment == "BL6 Vs. Rag1KO minipool2":
+        mutant = "RAG1KO"
+    if selected_experiment == "BL6 Vs. Rag1KO":
+        mutant = "RAG1KO"
+    if selected_experiment == "BL6 Vs. IFNyKO":
+        mutant = "IFNYKO"
+    if selected_experiment == "Single Transfection":
+        mutant = "RAG1KO"
+    return mutant
+
 ##################################################################################################################
 gene_dropdown_data = pd.read_csv("gene_dropdown.csv")
 gene_dropdown_list = gene_dropdown_data['gene'].tolist()
 gene_options = [{'label': key, 'value':key} for key in gene_dropdown_list]
 
+
+
 ##################################################################################################################
 data_sets = ["BL6 Vs. Rag1KO", "BL6 Vs. IFNyKO", "Single Transfection", "BL6 Vs. Rag1KO minipool2"]
 data_set_options = [ {'label': key, 'value':key} for key in data_sets ]
+
+
+
+
+
 
 ##################################################################################################################
 rag1ko_pools = ['pool1', 'pool3', 'pool4', 'poolC1', 'poolC2', "PBSTM139_PBSTM145", "PBSTM155_PBSTM158"]
@@ -53,26 +78,38 @@ rag1ko_backgrounds = [ "NP_BL6", "P_BL6", "NP_RAG1KO", "P_RAG1KO"]
 
 rag1ko_pool_options = [ {'label': key, 'value':key} for key in rag1ko_pools ]
 rag1ko_background_options = [ {'label': key, 'value':key} for key in rag1ko_backgrounds ]
-##################################################################################################################
 
 ifnyko_pools = ['poolC3', 'poolC4']
 ifnyko_backgrounds = [ "NP_BL6", "P_BL6", "NP_IFNYKO", "P_IFNYKO"]
 
 ifnyko_pool_options = [ {'label': key, 'value':key} for key in ifnyko_pools ]
 ifnyko_background_options = [ {'label': key, 'value':key} for key in ifnyko_backgrounds ]
-##################################################################################################################
+
 minipool2_pools = ['minipool2']
 minipool2_backgrounds = [ "P_BL6", "P_RAG1KO"]
 
 minipool2_pool_options = [ {'label': key, 'value':key} for key in minipool2_pools ]
 minipool2_background_options = [ {'label': key, 'value':key} for key in minipool2_backgrounds ]
-##################################################################################################################
 
 st_pools = ['poolC5']
 st_backgrounds = [ "NP_BL6", "P_BL6", "NP_RAG1KO", "P_RAG1KO"]
 
 st_pool_options = [ {'label': key, 'value':key} for key in st_pools ]
 st_background_options = [ {'label': key, 'value':key} for key in st_backgrounds ]
+
+def experiment_to_backgrounds(experiment):
+    if experiment == "BL6 Vs. Rag1KO":
+        return rag1ko_background_options
+    elif experiment == "BL6 Vs. IFNyKO":
+        return ifnyko_background_options
+    elif experiment == "BL6 Vs. Rag1KO minipool2":
+        return minipool2_background_options
+    else:
+        return st_background_options
+
+
+
+
 
 ##################################################################################################################
 time_series = ["ALLDAYS", "WO_D7"]
@@ -100,6 +137,7 @@ experiment_dict = dict(zip(experiment_meta["name"].tolist(),experiment_meta["fil
 app.config.suppress_callback_exceptions = True ###Note, dangerous -- see if needed. used if components are added after initialization
 app.layout = html.Div([
     html.Div([
+
                 html.Div([
                     html.Label("Experimental series:"),
                     dcc.Dropdown(
@@ -107,16 +145,6 @@ app.layout = html.Div([
                         value = 'BL6 Vs. Rag1KO',
                         options = data_set_options,
                         placeholder='Select an experiment',
-                        style={'width': '100%'}),
-                ], style = {'padding': '10px 10px', 'display': 'inline-block', 'text-align': 'justify', 'width': '15%'}),
-
-                html.Div([
-	            html.Label("Plot type:"),
-                    dcc.Dropdown(
-                        id='plottype-dropdown',
-                        value = 'scatter',
-                        options = plot_type_options,
-                        placeholder='Select plot type',
                         style={'width': '100%'}),
                 ], style = {'padding': '10px 10px', 'display': 'inline-block', 'text-align': 'justify', 'width': '15%'}),
 
@@ -141,9 +169,6 @@ app.layout = html.Div([
                 ], style = {'padding': '10px 10px', 'display': 'inline-block', 'text-align': 'justify', 'width': '15%'}),
 
 
-    ], style = {'padding': '0px 0px', 'display': 'inline-block', 'text-align': 'justify', 'width': '100%'}),
-    html.Div([
-
                 html.Div([
                     html.A([
                         html.Img(src=app.get_asset_url('MIMS_logo_blue.svg'), style={
@@ -152,18 +177,9 @@ app.layout = html.Div([
                         ], href='http://www.mims.umu.se/')
                 ], style = {'padding': '10px 10px', 'display': 'inline-block', 'text-align': 'justify', 'width': '15%'}),
 
-                html.Div([
-                    html.Label(id="opt1-label"),
-                    dcc.Dropdown(id='opt1-dropdown', style={'width': '100%'}),
-                ], style = {'padding': '10px 10px', 'display': 'inline-block', 'text-align': 'justify', 'width': '15%'}),
-
-                html.Div([
-                    html.Label(id="opt2-label"),
-                    dcc.Dropdown(id='opt2-dropdown', style = {'width': '100%'}),
-                ], style = {'padding': '10px 10px', 'display': 'inline-block', 'text-align': 'justify', 'width': '15%'})
-
     ], style = {'padding': '0px 0px', 'display': 'inline-block', 'text-align': 'justify', 'width': '100%'}),
-    ########################### plot panels ###########################
+
+    ########################### plot panel, scatter ###########################
     html.Div(
         className="row", children=[
             html.Div([dcc.Graph( id='plot1')], style={   'display': 'inline-block', 'margin': '0 auto', 'padding': '50px 50px', 'width': '100%'})
@@ -175,7 +191,7 @@ app.layout = html.Div([
                   'padding':'0'
         }
     ),
-    # For time series
+    ########################### plot panel, time series ###########################
     html.Div(
         className="row", children=[
             html.Div([dcc.Graph( id='plot2')], style={   'display': 'inline-block', 'margin': '0 auto', 'padding': '50px 50px', 'width': '100%'})
@@ -200,10 +216,6 @@ app.layout = html.Div([
      dash.dependencies.Output('opt1-label', 'children')],
     [dash.dependencies.Input('plottype-dropdown', 'value')])
 def toggle_container2(toggle_value):
-
-    if toggle_value == 'time series':
-        return {'display': 'block'},"Pool:"
-    else:
         return {'display': 'none'},""
 
 
@@ -213,79 +225,22 @@ def toggle_container2(toggle_value):
      dash.dependencies.Output('opt2-label', 'children')],
     [dash.dependencies.Input('plottype-dropdown', 'value')])
 def toggle_container2(toggle_value):
-
-    if toggle_value == 'time series':
-        return {'display': 'block'},"Treatment / Genotype:"
-    else:
         return {'display': 'none'},""
 
-##################################################################################################################
-@app.callback(
-    dash.dependencies.Output('plot2', 'style'),
-    [dash.dependencies.Input('plottype-dropdown', 'value')])
-def toggle_container2(toggle_value):
 
-    #if toggle_value == 'scatter':
-    return {'display': 'block'}
-
-###################################################################################################################
-@app.callback(
-    [dash.dependencies.Output('opt1-dropdown', 'options'),
-    dash.dependencies.Output('opt1-dropdown', 'placeholder')],
-    [dash.dependencies.Input('experiment-dropdown', 'value'),
-    dash.dependencies.Input('plottype-dropdown', 'value'),
-    dash.dependencies.Input('timeseries-dropdown', 'value')]
-)
-def update_dropdown1(experiment,plot,time):
-
-    if experiment == "BL6 Vs. Rag1KO" and plot == "time series":
-        return rag1ko_pool_options, 'Select pool'
-    elif experiment == "BL6 Vs. IFNyKO" and plot == "time series":
-        return ifnyko_pool_options, 'Select pool'
-    elif experiment == "Single Transfection" and plot == "time series":
-        return st_pool_options, 'Select pool'
-    elif experiment == "BL6 Vs. Rag1KO minipool2" and plot == "time series":
-        return minipool2_pool_options, 'Select pool'
-    else:
-#        return pval_options, 'Select p-value'
-        return [], 'Select p-value'
-
-##################################################################################################################
-@app.callback(
-    [dash.dependencies.Output('opt2-dropdown', 'options'),
-    dash.dependencies.Output('opt2-dropdown', 'placeholder')],
-    [dash.dependencies.Input('experiment-dropdown', 'value'),
-    dash.dependencies.Input('plottype-dropdown', 'value'),
-    dash.dependencies.Input('timeseries-dropdown', 'value')]
-)
-def update_dropdown2(experiment,plot,time):
-
-    if experiment == "BL6 Vs. Rag1KO" and plot == "time series":
-        return rag1ko_background_options, 'Select background'
-    elif experiment == "BL6 Vs. IFNyKO" and plot == "time series":
-        return ifnyko_background_options, 'Select background'
-    elif experiment == "BL6 Vs. Rag1KO minipool2" and plot == "time series":
-        return minipool2_background_options, 'Select background'
-    else:
-        return st_background_options, 'Select background'
 
 
 ##################################################################################################################
 #the scatter plot for all the genes
 @app.callback(Output('plot1', 'figure'),
     [Input('experiment-dropdown', 'value'),
-    Input('plottype-dropdown', 'value'),
     Input('timeseries-dropdown', 'value'),
-    Input('opt1-dropdown', 'value'),
-    Input('opt2-dropdown', 'value'),
     Input('gene-dropdown', 'value')])
-def update_plot(selected_experiment, selected_plottype, selected_timeseries, selected_opt1, selected_opt2, selected_gene):
-
-    print(selected_experiment, selected_plottype, selected_timeseries, selected_opt1)
+def update_plot_scatter(selected_experiment, selected_timeseries, selected_gene):
 
     key1 = " "
-    if selected_experiment and selected_plottype and selected_timeseries and selected_gene:
-        key1 = selected_experiment + " " + selected_plottype + " " + selected_timeseries + " ADJ"
+    if selected_experiment and selected_timeseries and selected_gene:
+        key1 = selected_experiment + " scatter " + selected_timeseries + " ADJ"
 
     if key1 in experiment_dict.keys():
         ##################################################################################################################
@@ -315,13 +270,8 @@ def update_plot(selected_experiment, selected_plottype, selected_timeseries, sel
             return fig
         else:
             ################################################################################
-            # which mutan to compare to?
-            if selected_experiment == "BL6 Vs. Rag1KO":
-                mutant = "RAG1KO"
-            if selected_experiment == "BL6 Vs. IFNyKO":
-                mutant = "IFNYKO"
-            if selected_experiment == "Single Transfection":
-                mutant = "RAG1KO"
+            # which mutant to compare to?
+            mutant = experiment_to_mutant(selected_experiment)
 
             ################################################################################
             filename1 = DATA_DIR + "/ALL_BL6_NP_VS_" + mutant + "_NP_RGR_T_TEST_SUMMARY_PVAL_0.01.csv"
@@ -432,12 +382,9 @@ def update_plot(selected_experiment, selected_plottype, selected_timeseries, sel
                     }
 
                 }
-from os import listdir
-from os.path import isfile, join
 
 
 
-genotypes_to_compare = ["P_BL6","P_IFNYKO"]   #change by clicking ona  point later
 
 
 ##################################################################################################################
@@ -445,43 +392,42 @@ genotypes_to_compare = ["P_BL6","P_IFNYKO"]   #change by clicking ona  point lat
 ##################################################################################################################
 @app.callback(Output('plot2', 'figure'),
     [Input('experiment-dropdown', 'value'),
-    Input('plottype-dropdown', 'value'),
     Input('timeseries-dropdown', 'value'),
-    Input('opt1-dropdown', 'value'),
-    Input('opt2-dropdown', 'value'),
     Input('gene-dropdown', 'value')])
-def update_plot(selected_experiment, selected_plottype, selected_timeseries, selected_opt1, selected_opt2, selected_gene):
+def update_plot_ts(selected_experiment, selected_timeseries, selected_gene):
 
-    print(selected_experiment, selected_plottype, selected_timeseries, selected_opt1)
-
-    key2 = " "
-
-    selected_timeseries = "ALLDAYS"  #or WO_D7
-    #selected_timeseries = "poolC4"
-    selected_opt1 = "poolC3"  #pool
-    selected_opt2 = "P_BL6"  #genotype. 4 of them, show one in each column?. ... variable number
-    #genotypes = ""
-    genotypes = [ "NP_BL6", "P_BL6", "NP_IFNYKO", "P_IFNYKO"]  #depends on the pool
-
-    #if selected_experiment and selected_plottype and selected_timeseries and selected_gene and selected_opt1:
-    key2 = selected_experiment + " time series " + selected_timeseries
-
+    mutant = experiment_to_mutant(selected_experiment)
+    genotypes_to_compare = ["P_BL6","NP_BL6","P_"+mutant,"NP_"+mutant]
 
     allpools=[]
     for onegeno in genotypes_to_compare:
-        onlyfiles = [f for f in listdir("barseq_abundance") if isfile(join("barseq_abundance", f))]
+        onlyfiles = [f for f in listdir("barseq_abundance") if os.path.exists(join("barseq_abundance", f)) and isfile(join("barseq_abundance", f))]
         onlyfiles = [f for f in onlyfiles if f.startswith("ABUNDANCE_"+onegeno+"_")]
-        allpools.extend([(f,onegeno + " / "+f[len("ABUNDANCE_"+onegeno+"_"):].replace(".csv","")) for f in onlyfiles])
+        allpools.extend([{"file":f,"name":onegeno + " / "+f[len("ABUNDANCE_"+onegeno+"_"):].replace(".csv","")} for f in onlyfiles])
     print(allpools)
 
+    #Read all the files
+    for i in range(len(allpools)):
+        onepool=allpools[i]
+        plotdatafile = "barseq_abundance/"+onepool["file"]
+        print(plotdatafile)
+        DATA = pd.read_csv(plotdatafile)
+        onepool["data"] = DATA
+        onepool["hasgene"] = selected_gene in set(DATA["gene"].tolist())
 
+    #only keep those with the selected gene
+    allpools = [p for p in allpools if p["hasgene"]]
+
+    #Decide plot locations
     ncol = 3
     nrow = int(math.ceil(len(allpools)/ncol))
-
+    if nrow==0:
+        nrow=1
     figtot = make_subplots(
                 cols=ncol, rows=nrow,
                 specs=[[{"type": "scatter"}]*ncol]*nrow)
 
+    #how to color mice
     colorlist = pd.read_csv("colors.csv")["color"]
     color_discrete_map = dict(zip(["m"+str(i+1) for i in range(len(colorlist))], colorlist))
 
@@ -491,10 +437,10 @@ def update_plot(selected_experiment, selected_plottype, selected_timeseries, sel
     rowi=1
     paneli=1
     for onepooli,onepool in enumerate(allpools):
-        fname, poolname = onepool #('ABUNDANCE_P_IFNYKO_POOLC4.csv', 'POOLC4')
-        plotdatafile = "barseq_abundance/"+fname
+        fname = onepool["file"]
+        poolname = onepool["name"]
+        DATA = onepool["data"]
 
-        DATA = pd.read_csv(plotdatafile)
         list_mice = set(DATA["mice"].tolist())
         for onemouse in list_mice:
             usedat = DATA[DATA["gene"] == selected_gene].copy()
@@ -512,33 +458,21 @@ def update_plot(selected_experiment, selected_plottype, selected_timeseries, sel
             figtot.add_trace(fig1,row=rowi, col=coli)
 
         figtot.update_xaxes(title_text="Day, "+poolname, row=rowi, col=coli)
-#        figtot.update_xaxes(title_text="Day", row=rowi, col=coli)
         figtot.update_yaxes(title_text="BC abundance(%)", row=rowi, col=coli)
-#        figtot.layout.annotations[paneli].update(text="Stackoverflow")
         coli=coli+1
         paneli=paneli+1
         if coli>ncol:
             coli=1
             rowi=rowi+1
 
-    #figtot.update_layout( autosize= False, width = 1200, height = len(allpools)*200+10, margin={'t':0, 'b':0,'l':0, 'r':0})
     figtot.update_layout( autosize= False, width = 1200, height = nrow*300, margin={'t':0, 'b':0,'l':0, 'r':0})
     return figtot
 
 
 
-#(base) mahogny@beagle:/corgi/websites/barseqviewer$ ls barseq_abundance/ABUNDANCE_P_BL6_POOLC3.csv
-#ABUNDANCE_NP_BL6_PBSTM139_PBSTM145.csv     ABUNDANCE_NP_RAG1KO_POOL1.csv              ABUNDANCE_P_BL6_POOLC3.csv
-#ABUNDANCE_NP_BL6_PBSTM155_PBSTM158.csv     ABUNDANCE_NP_RAG1KO_POOL3.csv              ABUNDANCE_P_BL6_POOLC4.csv
-#ABUNDANCE_NP_BL6_POOL1.csv                 ABUNDANCE_NP_RAG1KO_POOL4.csv              ABUNDANCE_P_BL6_POOLC5.csv
-#ABUNDANCE_NP_BL6_POOL3.csv                 ABUNDANCE_NP_RAG1KO_POOLC1.csv             ABUNDANCE_P_IFNYKO_POOLC3.csv
-#ABUNDANCE_NP_BL6_POOL4.csv                 ABUNDANCE_NP_RAG1KO_POOLC2.csv             ABUNDANCE_P_IFNYKO_POOLC4.csv
-#....
 
 
-##################################################################################################################
-##### Callback: Update gene information box ... links
-###########
+
 
 # run the app on "python app.py";
 # default port: 8050
@@ -547,3 +481,9 @@ if __name__ == '__main__':
 
 app = dash.Dash(__name__)
 #viewer.show(app)
+
+
+
+
+
+
