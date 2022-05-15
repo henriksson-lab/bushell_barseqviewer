@@ -31,6 +31,7 @@ def getList(dict):
 
 print("\n========= starting server =========\n")
 
+
 server = flask.Flask(__name__)
 app = dash.Dash(
   __name__,
@@ -162,11 +163,10 @@ app.layout = html.Div([
                 ], style = {'padding': '10px 10px', 'display': 'inline-block', 'text-align': 'justify', 'width': '15%'})
 
     ], style = {'padding': '0px 0px', 'display': 'inline-block', 'text-align': 'justify', 'width': '100%'}),
-    ########################### 4 plot panels ###########################
+    ########################### plot panels ###########################
     html.Div(
         className="row", children=[
-            html.Div([dcc.Graph( id='plot1')], style={   'display': 'inline-block', 'margin': '0 auto', 'padding': '50px 50px', 'width': '50%'}),
-            html.Div([dcc.Graph( id='plot2')], style={   'display': 'inline-block', 'margin': '0 auto', 'padding': '50px 50px', 'width': '50%'}),
+            html.Div([dcc.Graph( id='plot1')], style={   'display': 'inline-block', 'margin': '0 auto', 'padding': '50px 50px', 'width': '100%'})
         ], style={
                   'position': 'inline-block',
                   'width': '100%',
@@ -175,10 +175,10 @@ app.layout = html.Div([
                   'padding':'0'
         }
     ),
+    # For time series
     html.Div(
         className="row", children=[
-            html.Div([dcc.Graph( id='plot3')], style={   'display': 'inline-block', 'margin': '0 auto', 'padding': '50px 50px', 'width': '50%'}),
-            html.Div([dcc.Graph( id='plot4')], style={   'display': 'inline-block', 'margin': '0 auto', 'padding': '50px 50px', 'width': '50%'})
+            html.Div([dcc.Graph( id='plot2')], style={   'display': 'inline-block', 'margin': '0 auto', 'padding': '50px 50px', 'width': '100%'})
         ], style={
                   'position': 'inline-block',
                   'width': '100%',
@@ -225,31 +225,8 @@ def toggle_container2(toggle_value):
     [dash.dependencies.Input('plottype-dropdown', 'value')])
 def toggle_container2(toggle_value):
 
-    if toggle_value == 'scatter':
-        return {'display': 'block'}
-    else:
-        return {'display': 'none'}
-
-##################################################################################################################
-@app.callback(
-    dash.dependencies.Output('plot3', 'style'),
-    [dash.dependencies.Input('plottype-dropdown', 'value')])
-def toggle_container2(toggle_value):
-    if toggle_value == 'scatter':
-        return {'display': 'block'}
-    else:
-        return {'display': 'none'}
-
-##################################################################################################################
-@app.callback(
-    dash.dependencies.Output('plot4', 'style'),
-    [dash.dependencies.Input('plottype-dropdown', 'value')])
-def toggle_container2(toggle_value):
-
-    if toggle_value == 'scatter':
-        return {'display': 'block'}
-    else:
-        return {'display': 'none'}
+    #if toggle_value == 'scatter':
+    return {'display': 'block'}
 
 ###################################################################################################################
 @app.callback(
@@ -307,16 +284,10 @@ def update_plot(selected_experiment, selected_plottype, selected_timeseries, sel
     print(selected_experiment, selected_plottype, selected_timeseries, selected_opt1)
 
     key1 = " "
-    key2 = " "
-
     if selected_experiment and selected_plottype and selected_timeseries and selected_gene:
         key1 = selected_experiment + " " + selected_plottype + " " + selected_timeseries + " ADJ"
 
-    if selected_experiment and selected_plottype and selected_timeseries and selected_gene and selected_opt1:
-        key2 = selected_experiment + " " + selected_plottype + " " + selected_timeseries
-
-
-    if selected_plottype == "scatter" and key1 in experiment_dict.keys():
+    if key1 in experiment_dict.keys():
         ##################################################################################################################
         # All the scatter plots
         ##################################################################################################################
@@ -344,6 +315,7 @@ def update_plot(selected_experiment, selected_plottype, selected_timeseries, sel
             return fig
         else:
             ################################################################################
+            # which mutan to compare to?
             if selected_experiment == "BL6 Vs. Rag1KO":
                 mutant = "RAG1KO"
             if selected_experiment == "BL6 Vs. IFNyKO":
@@ -421,7 +393,7 @@ def update_plot(selected_experiment, selected_plottype, selected_timeseries, sel
 
             figtot.add_trace(fig2,row=1, col=2)
             figtot.update_xaxes(title_text="Relative.Growth.Rate (BL6 NP)", row=1, col=2)
-            figtot.update_xaxes(title_text="Relative.Growth.Rate (BL6 P)", row=1, col=2)
+            figtot.update_yaxes(title_text="Relative.Growth.Rate (BL6 P)", row=1, col=2)
 
             figtot.add_trace(fig3,row=2, col=1)
             figtot.update_xaxes(title_text="Relative.Growth.Rate (BL6 P)", row=2, col=1)
@@ -434,47 +406,6 @@ def update_plot(selected_experiment, selected_plottype, selected_timeseries, sel
             figtot.update_layout( autosize= False, width = 1200, height = 600, margin={'t':0, 'b':0,'l':0, 'r':0})
             return figtot
 
-
-    elif selected_plottype == "time series" and key2 in experiment_dict.keys() and selected_opt2:
-        ##################################################################################################################
-        # Time series plots
-        ##################################################################################################################
-        DATA_DIR = experiment_dict[key2]
-        plotdatafile = DATA_DIR + "/ABUNDANCE_" + selected_opt2.upper() + "_" + selected_opt1.upper() + ".csv"
-
-        if os.path.isfile(plotdatafile):
-            DATA = pd.read_csv(plotdatafile)
-            DATA1 = DATA[DATA["gene"] == selected_gene].copy()
-
-        else:
-            DATA1 = pd.DataFrame()
-        if DATA1.empty:
-            return {
-                    "layout": {
-                        "xaxis": {
-                            "visible": False
-                            },
-                        "yaxis": {
-                            "visible": False
-                            },
-                        "annotations": [
-                            {
-                                "text": "No matching data found",
-                                "xref": "paper",
-                                "yref": "paper",
-                                "showarrow": False,
-                                "font": {
-                                    "size": 28
-                                    }
-                                }
-                            ]
-                        }
-                    }
-        else:
-            fig1 = px.scatter(DATA1, x = 'day', y = 'abundance', color = 'mice', labels={ "day": "day", "abundance": "Barcode abundance(%)"})
-            fig1.update_traces(mode='lines+markers')
-            fig1.update_layout( autosize= False, width = 1200, height = 600, margin={'t':0, 'b':0,'l':0, 'r':0})
-            return fig1
     else:
         ##################################################################################################################
         # All plots disabled
@@ -501,8 +432,108 @@ def update_plot(selected_experiment, selected_plottype, selected_timeseries, sel
                     }
 
                 }
+from os import listdir
+from os.path import isfile, join
 
 
+
+genotypes_to_compare = ["P_BL6","P_IFNYKO"]   #change by clicking ona  point later
+
+
+##################################################################################################################
+# Time series plots
+##################################################################################################################
+@app.callback(Output('plot2', 'figure'),
+    [Input('experiment-dropdown', 'value'),
+    Input('plottype-dropdown', 'value'),
+    Input('timeseries-dropdown', 'value'),
+    Input('opt1-dropdown', 'value'),
+    Input('opt2-dropdown', 'value'),
+    Input('gene-dropdown', 'value')])
+def update_plot(selected_experiment, selected_plottype, selected_timeseries, selected_opt1, selected_opt2, selected_gene):
+
+    print(selected_experiment, selected_plottype, selected_timeseries, selected_opt1)
+
+    key2 = " "
+
+    selected_timeseries = "ALLDAYS"  #or WO_D7
+    #selected_timeseries = "poolC4"
+    selected_opt1 = "poolC3"  #pool
+    selected_opt2 = "P_BL6"  #genotype. 4 of them, show one in each column?. ... variable number
+    #genotypes = ""
+    genotypes = [ "NP_BL6", "P_BL6", "NP_IFNYKO", "P_IFNYKO"]  #depends on the pool
+
+    #if selected_experiment and selected_plottype and selected_timeseries and selected_gene and selected_opt1:
+    key2 = selected_experiment + " time series " + selected_timeseries
+
+
+    allpools=[]
+    for onegeno in genotypes_to_compare:
+        onlyfiles = [f for f in listdir("barseq_abundance") if isfile(join("barseq_abundance", f))]
+        onlyfiles = [f for f in onlyfiles if f.startswith("ABUNDANCE_"+onegeno+"_")]
+        allpools.extend([(f,onegeno + " / "+f[len("ABUNDANCE_"+onegeno+"_"):].replace(".csv","")) for f in onlyfiles])
+    print(allpools)
+
+
+    ncol = 3
+    nrow = int(math.ceil(len(allpools)/ncol))
+
+    figtot = make_subplots(
+                cols=ncol, rows=nrow,
+                specs=[[{"type": "scatter"}]*ncol]*nrow)
+
+    colorlist = pd.read_csv("colors.csv")["color"]
+    color_discrete_map = dict(zip(["m"+str(i+1) for i in range(len(colorlist))], colorlist))
+
+    #loop over all possible genotypes and pools
+    figlist=[]
+    coli=1
+    rowi=1
+    paneli=1
+    for onepooli,onepool in enumerate(allpools):
+        fname, poolname = onepool #('ABUNDANCE_P_IFNYKO_POOLC4.csv', 'POOLC4')
+        plotdatafile = "barseq_abundance/"+fname
+
+        DATA = pd.read_csv(plotdatafile)
+        list_mice = set(DATA["mice"].tolist())
+        for onemouse in list_mice:
+            usedat = DATA[DATA["gene"] == selected_gene].copy()
+            usedat = usedat[usedat["mice"] == onemouse]
+            hover_data = ["<br>".join([str(i)+":"+str(rec[i]) for d,i in enumerate(rec)])
+                                     for rec in usedat.to_dict('records')]
+            fig1 = go.Scatter(
+                mode = 'lines+markers',
+                x = usedat["day"],
+                y = usedat["abundance"],
+                marker_color = [color_discrete_map[c] for c in usedat['mice']],
+                line_color = color_discrete_map[onemouse],
+                hovertext = hover_data, showlegend=False
+            )
+            figtot.add_trace(fig1,row=rowi, col=coli)
+
+        figtot.update_xaxes(title_text="Day, "+poolname, row=rowi, col=coli)
+#        figtot.update_xaxes(title_text="Day", row=rowi, col=coli)
+        figtot.update_yaxes(title_text="BC abundance(%)", row=rowi, col=coli)
+#        figtot.layout.annotations[paneli].update(text="Stackoverflow")
+        coli=coli+1
+        paneli=paneli+1
+        if coli>ncol:
+            coli=1
+            rowi=rowi+1
+
+    #figtot.update_layout( autosize= False, width = 1200, height = len(allpools)*200+10, margin={'t':0, 'b':0,'l':0, 'r':0})
+    figtot.update_layout( autosize= False, width = 1200, height = nrow*300, margin={'t':0, 'b':0,'l':0, 'r':0})
+    return figtot
+
+
+
+#(base) mahogny@beagle:/corgi/websites/barseqviewer$ ls barseq_abundance/ABUNDANCE_P_BL6_POOLC3.csv
+#ABUNDANCE_NP_BL6_PBSTM139_PBSTM145.csv     ABUNDANCE_NP_RAG1KO_POOL1.csv              ABUNDANCE_P_BL6_POOLC3.csv
+#ABUNDANCE_NP_BL6_PBSTM155_PBSTM158.csv     ABUNDANCE_NP_RAG1KO_POOL3.csv              ABUNDANCE_P_BL6_POOLC4.csv
+#ABUNDANCE_NP_BL6_POOL1.csv                 ABUNDANCE_NP_RAG1KO_POOL4.csv              ABUNDANCE_P_BL6_POOLC5.csv
+#ABUNDANCE_NP_BL6_POOL3.csv                 ABUNDANCE_NP_RAG1KO_POOLC1.csv             ABUNDANCE_P_IFNYKO_POOLC3.csv
+#ABUNDANCE_NP_BL6_POOL4.csv                 ABUNDANCE_NP_RAG1KO_POOLC2.csv             ABUNDANCE_P_IFNYKO_POOLC4.csv
+#....
 
 
 ##################################################################################################################

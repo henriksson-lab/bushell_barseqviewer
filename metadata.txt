@@ -7,11 +7,3 @@ Single Transfection scatter ALLDAYS ADJ,POOLC5_ADJ_PVAL
 Single Transfection scatter WO_D7 ADJ,POOLC5_WO_D7_ADJ_PVAL
 BL6 Vs. Rag1KO minipool2 scatter ALLDAYS ADJ,MINIPOOL2_ALLDAYS_ADJ_PVAL
 BL6 Vs. Rag1KO minipool2 scatter WO_D7 ADJ,MINIPOOL2_WO_D7_ADJ_PVAL
-Single Transfection time series ALLDAYS,single_transfection_barseq_abundances
-Single Transfection time series WO_D7,single_transfection_barseq_abundances_wo_d7
-BL6 Vs. Rag1KO time series ALLDAYS,barseq_abundance
-BL6 Vs. Rag1KO time series WO_D7,barseq_abundance_wo_d7
-BL6 Vs. IFNyKO time series ALLDAYS,interferon_barseq_abundances
-BL6 Vs. IFNyKO time series WO_D7,interferon_barseq_abundances_wo_d7
-BL6 Vs. Rag1KO minipool2 time series ALLDAYS,barseq_abundance
-BL6 Vs. Rag1KO minipool2 time series WO_D7,barseq_abundance_wo_d7
