@@ -78,8 +78,8 @@ time_series = ["ALLDAYS", "WO_D7"]
 time_series_options = [ {'label': key, 'value':key} for key in time_series ]
 
 ##################################################################################################################
-pvals = ["RAW", "ADJ"]
-pval_options = [ {'label': key, 'value':key} for key in pvals ]
+#pvals = ["RAW", "ADJ"]
+#pval_options = [ {'label': key, 'value':key} for key in pvals ]
 
 ##################################################################################################################
 plottypes = ["scatter", "time series"]
@@ -197,21 +197,34 @@ app.layout = html.Div([
                 ], style = {'padding': '10px 10px', 'display': 'inline-block', 'text-align': 'justify', 'width': '15%'})
 
     ], style = {'padding': '0px 0px', 'display': 'inline-block', 'text-align': 'justify', 'width': '100%'}),
-    html.Div( ########## 4 plot panels ###########
+    ########################### 4 plot panels ###########################
+    html.Div(
         className="row", children=[
-
-            html.Div([dcc.Graph( id='plot1')], style={   'display': 'inline-block', 'margin': '0 auto', 'padding': '50px 50px'}),
-            html.Div([dcc.Graph( id='plot2')], style={   'display': 'inline-block', 'margin': '0 auto', 'padding': '50px 50px'}),
-            html.Div([dcc.Graph( id='plot3')], style={   'display': 'inline-block', 'margin': '0 auto', 'padding': '50px 50px'}),
-            html.Div([dcc.Graph( id='plot4')], style={   'display': 'inline-block', 'margin': '0 auto', 'padding': '50px 50px'})
+            html.Div([dcc.Graph( id='plot1')], style={   'display': 'inline-block', 'margin': '0 auto', 'padding': '50px 50px', 'width': '50%'}),
+            html.Div([dcc.Graph( id='plot2')], style={   'display': 'inline-block', 'margin': '0 auto', 'padding': '50px 50px', 'width': '50%'}),
         ], style={
                   'position': 'inline-block',
                   'width': '100%',
-                  'height': '100%',
+                  'height': '50%',
+                  'margin': '0 auto',
+                  'padding':'0'
+        }
+    ),
+    html.Div(
+        className="row", children=[
+            html.Div([dcc.Graph( id='plot3')], style={   'display': 'inline-block', 'margin': '0 auto', 'padding': '50px 50px', 'width': '50%'}),
+            html.Div([dcc.Graph( id='plot4')], style={   'display': 'inline-block', 'margin': '0 auto', 'padding': '50px 50px', 'width': '50%'})
+        ], style={
+                  'position': 'inline-block',
+                  'width': '100%',
+                  'height': '50%',
                   'margin': '0 auto',
                   'padding':'0'
         }
     )
+
+
+
 ])
 
 
@@ -292,7 +305,8 @@ def update_dropdown1(experiment,plot,time):
     elif experiment == "BL6 Vs. Rag1KO minipool2" and plot == "time series":
         return minipool2_pool_options, 'Select pool'
     else:
-        return pval_options, 'Select p-value'
+#        return pval_options, 'Select p-value'
+        return [], 'Select p-value'
 
 ##################################################################################################################
 @app.callback(
@@ -316,10 +330,7 @@ def update_dropdown2(experiment,plot,time):
 
 ##################################################################################################################
 #the scatter plot for all the genes
-@app.callback([Output('plot1', 'figure'),
-    Output('plot2', 'figure'),
-    Output('plot3', 'figure'),
-    Output('plot4', 'figure'),],
+@app.callback(Output('plot1', 'figure'),
     [Input('experiment-dropdown', 'value'),
     Input('plottype-dropdown', 'value'),
     Input('timeseries-dropdown', 'value'),
@@ -363,10 +374,11 @@ def update_plot(selected_experiment, selected_plottype, selected_timeseries, sel
             fig = px.scatter(DATA_PLOT[DATA_PLOT.gene_status.isin(['Not significant','significant',selected_gene])], x = 'rgr_bl6_p', y = 'rgr_' + mutant.lower() + '_p', color_discrete_map = color_discrete_map,
                 hover_data = ['gene','pvalue','pvalue_corrected','pheno_bl6_p','pheno_' + mutant.lower() + '_p','rgr_bl6_p','rgr_bl6_p','gene_product','significant_status'], color = 'gene_status', labels={ "rgr_bl6_p": "Relative.Growth.Rate (BL6 P)", "rgr_" + mutant.lower() + "_p": "Relative.Growth.Rate (" + mutant + " P)"})
 
-            fig.update_layout( autosize= False, width = 1200, height = 600, margin={'t':0, 'b':0,'l':0, 'r':0})
+            #fig.update_layout() # autosize= False, width = 1200, height = 600, margin={'t':0, 'b':0,'l':0, 'r':0})
+            #fig.update_layout( autosize= False, width = 1200, height = 600, margin={'t':0, 'b':0,'l':0, 'r':0})
+            fig.update_layout( width = "50%", height = 600, margin={'t':0, 'b':0,'l':0, 'r':0})
 
-            return fig, {}, {}, {}
-
+            return fig
         else:
             ################################################################################
             if selected_experiment == "BL6 Vs. Rag1KO":
@@ -411,49 +423,53 @@ def update_plot(selected_experiment, selected_plottype, selected_timeseries, sel
             DATA3 = DATA3[DATA3["gene"].isin(common_list)]
             DATA4 = DATA4[DATA4["gene"].isin(common_list)]
 
+            figtot = make_subplots(
+                rows=2, cols=2,
+                specs=[[{"type": "scatter"}, {"type": "scatter"}],
+                       [{"type": "scatter"}, {"type": "scatter"}]])
 
+            def makeplot(DATA1, usex, usey):
+                DATA_PLOT1 = DATA1.copy()
+                gene_status1 = [ selected_gene if v == selected_gene else DATA_PLOT1['significant_status'].values[i] for i, v in enumerate(DATA_PLOT1["gene"].tolist())]
+                color_discrete_map = {'Not significant': 'rgb(255,0,0)', 'significant': 'rgb(0,255,0)', selected_gene: 'rgb(0,0,255)'}
+                DATA_PLOT1['gene_status'] = gene_status1
 
-            DATA_PLOT1 = DATA1.copy()
-            gene_status1 = [ selected_gene if v == selected_gene else DATA_PLOT1['significant_status'].values[i] for i, v in enumerate(DATA_PLOT1["gene"].tolist())]
-            color_discrete_map = {'Not significant': 'rgb(255,0,0)', 'significant': 'rgb(0,255,0)', selected_gene: 'rgb(0,0,255)'}
-            DATA_PLOT1['gene_status'] = gene_status1
+                hover_data = ["<br>".join([str(i)+":"+str(rec[i]) for d,i in enumerate(rec)]) 
+                                       for rec in DATA_PLOT1.to_dict('records')]
 
-            fig1 = px.scatter(DATA_PLOT1[DATA_PLOT1.gene_status.isin(['Not significant','significant',selected_gene])], x = 'rgr_bl6_np', y = 'rgr_' + mutant.lower() + '_np', color_discrete_map = color_discrete_map,
-                hover_data = ['gene','pvalue','pvalue_corrected','pheno_bl6_np','pheno_' + mutant.lower() + '_np','rgr_bl6_np','rgr_bl6_np','gene_product','significant_status'], color = 'gene_status', labels={ "rgr_bl6_np": "Relative.Growth.Rate (BL6 NP)", "rgr_" + mutant.lower() + "_np": "Relative.Growth.Rate (" + mutant + " NP)"})
-            fig1.update_layout( autosize= False, width = 1200, height = 600, margin={'t':0, 'b':0,'l':0, 'r':0})
+                usedat = DATA_PLOT1[DATA_PLOT1.gene_status.isin(['Not significant','significant',selected_gene])]
+                fig1 = go.Scatter(
+                    mode = 'markers',
+                    x = usedat[usex],
+                    y = usedat[usey],
+                    marker_color = [color_discrete_map[c] for c in usedat['gene_status']],
+                    hovertext = hover_data
+                )
+                return fig1
 
+            fig1 = makeplot(DATA1, 'rgr_bl6_np',             'rgr_' + mutant.lower() + '_np')
+            fig2 = makeplot(DATA2, 'rgr_bl6_np',             'rgr_bl6_p')
+            fig3 = makeplot(DATA3, 'rgr_bl6_p',              'rgr_' + mutant.lower() + '_p')
+            fig4 = makeplot(DATA4, 'rgr_' + mutant + '_p',   'rgr_' + mutant + '_np')
 
+            figtot.add_trace(fig1,row=1, col=1)
+            figtot.update_xaxes(title_text="Relative.Growth.Rate (BL6 NP)", row=1, col=1)
+            figtot.update_yaxes(title_text="Relative.Growth.Rate (" + mutant + " NP)", row=1, col=1)
 
-            DATA_PLOT2 = DATA2.copy()
-            gene_status2 = [ selected_gene if v == selected_gene else DATA_PLOT2['significant_status'].values[i] for i, v in enumerate(DATA_PLOT2["gene"].tolist())]
-            color_discrete_map = {'Not significant': 'rgb(255,0,0)', 'significant': 'rgb(0,255,0)', selected_gene: 'rgb(0,0,255)'}
-            DATA_PLOT2['gene_status'] = gene_status2
+            figtot.add_trace(fig2,row=1, col=2)
+            figtot.update_xaxes(title_text="Relative.Growth.Rate (BL6 NP)", row=1, col=2)
+            figtot.update_xaxes(title_text="Relative.Growth.Rate (BL6 P)", row=1, col=2)
 
-            fig2 = px.scatter(DATA_PLOT2[DATA_PLOT2.gene_status.isin(['Not significant','significant',selected_gene])], x = 'rgr_bl6_np', y = 'rgr_bl6_p', color_discrete_map = color_discrete_map,
-                hover_data = ['gene','pvalue','pvalue_corrected','pheno_bl6_np','pheno_bl6_p','rgr_bl6_np','rgr_bl6_p','gene_product','significant_status'], color = 'gene_status', labels={ "rgr_bl6_np": "Relative.Growth.Rate (BL6 NP)", "rgr_bl6_p": "Relative.Growth.Rate (BL6 P)"})
-            fig2.update_layout( autosize= False, width = 1200, height = 600, margin={'t':0, 'b':0,'l':0, 'r':0})
+            figtot.add_trace(fig3,row=2, col=1)
+            figtot.update_xaxes(title_text="Relative.Growth.Rate (BL6 P)", row=2, col=1)
+            figtot.update_yaxes(title_text="Relative.Growth.Rate (" + mutant + " P)", row=2, col=1)
 
+            figtot.add_trace(fig4,row=2, col=2)
+            figtot.update_xaxes(title_text="Relative.Growth.Rate (" + mutant + " P)", row=2, col=2)
+            figtot.update_yaxes(title_text="Relative.Growth.Rate (" + mutant + " NP)", row=2, col=2)
 
-            DATA_PLOT3 = DATA3.copy()
-            gene_status3 = [ selected_gene if v == selected_gene else DATA_PLOT3['significant_status'].values[i] for i, v in enumerate(DATA_PLOT3["gene"].tolist())]
-            color_discrete_map = {'Not significant': 'rgb(255,0,0)', 'significant': 'rgb(0,255,0)', selected_gene: 'rgb(0,0,255)'}
-            DATA_PLOT3['gene_status'] = gene_status3
-
-            fig3 = px.scatter(DATA_PLOT3[DATA_PLOT3.gene_status.isin(['Not significant','significant',selected_gene])], x = 'rgr_bl6_p', y = 'rgr_' + mutant.lower() + '_p', color_discrete_map = color_discrete_map,
-                hover_data = ['gene','pvalue','pvalue_corrected','pheno_bl6_p','pheno_' + mutant.lower() + '_p','rgr_bl6_p','rgr_' + mutant.lower() + '_p','gene_product','significant_status'], color = 'gene_status', labels={ "rgr_bl6_p": "Relative.Growth.Rate (BL6 P)", "rgr_" + mutant.lower() + "_p": "Relative.Growth.Rate (" + mutant + " P)"})
-            fig3.update_layout( autosize= False, width = 1200, height = 600, margin={'t':0, 'b':0,'l':0, 'r':0})
-
-
-            DATA_PLOT4 = DATA4.copy()
-            gene_status4 = [ selected_gene if v == selected_gene else DATA_PLOT4['significant_status'].values[i] for i, v in enumerate(DATA_PLOT4["gene"].tolist())]
-            color_discrete_map = {'Not significant': 'rgb(255,0,0)', 'significant': 'rgb(0,255,0)', selected_gene: 'rgb(0,0,255)'}
-            DATA_PLOT4['gene_status'] = gene_status4
-
-            fig4 = px.scatter(DATA_PLOT4[DATA_PLOT4.gene_status.isin(['Not significant','significant',selected_gene])], x = 'rgr_' + mutant + '_p', y = 'rgr_' + mutant + '_np', color_discrete_map = color_discrete_map,
-                hover_data = ['gene','pvalue','pvalue_corrected','pheno_' + mutant + '_p','pheno_' + mutant + '_np','rgr_' + mutant + '_p','rgr_' + mutant + '_np','gene_product','significant_status'], color = 'gene_status', labels={ "rgr_" + mutant + "_p": "Relative.Growth.Rate (" + mutant + " P)", "rgr_" + mutant + "_np": "Relative.Growth.Rate (" + mutant + " NP)"})
-            fig4.update_layout( autosize= False, width = 1200, height = 600, margin={'t':0, 'b':0,'l':0, 'r':0})
-
-            return fig3, fig1, fig2, fig4
+            figtot.update_layout( autosize= False, width = 1200, height = 600, margin={'t':0, 'b':0,'l':0, 'r':0})
+            return figtot
 
 
     elif selected_plottype == "time series" and key2 in experiment_dict.keys() and selected_opt2:
@@ -490,12 +506,12 @@ def update_plot(selected_experiment, selected_plottype, selected_timeseries, sel
                                 }
                             ]
                         }
-                    }, {}, {}, {}
+                    }
         else:
             fig1 = px.scatter(DATA1, x = 'day', y = 'abundance', color = 'mice', labels={ "day": "day", "abundance": "Barcode abundance(%)"})
             fig1.update_traces(mode='lines+markers')
             fig1.update_layout( autosize= False, width = 1200, height = 600, margin={'t':0, 'b':0,'l':0, 'r':0})
-            return fig1, {}, {}, {}
+            return fig1
     else:
         ##################################################################################################################
         # All plots disabled
@@ -521,7 +537,7 @@ def update_plot(selected_experiment, selected_plottype, selected_timeseries, sel
                         ]
                     }
 
-                }, {}, {}, {}
+                }
 
 
 
